@@ -23,7 +23,8 @@ namespace Example
             window.Render += () =>
             {
                 view.ClearScreen();
-                foreach (var shape in model.ShapeBounds) view.DrawShape(shape);
+                view.DrawPlayer(model.playerBounds.CenterX, model.playerBounds.CenterY, model.playerBounds.Radius);
+                foreach (var shape in model.ShapeBounds) view.DrawAsteroids(shape);
             };
 
             window.Resize += view.Resize;

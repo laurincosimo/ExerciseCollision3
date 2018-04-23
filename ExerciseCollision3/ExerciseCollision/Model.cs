@@ -5,7 +5,8 @@ namespace Example
 {
     public class Model
     {
-        public IEnumerable<IReadOnlyCircle> ShapeBounds => new[] { playerBounds, asteroidBounds };
+        //create an iterator for the asteroids list
+        public IEnumerable<IReadOnlyCircle> ShapeBounds => new[] { asteroidBounds };
 
         public void Update(float movementXaxis, float updatePeriod)
         {
@@ -26,6 +27,6 @@ namespace Example
         }
 
         private Circle asteroidBounds = new Circle(-0.2f, 1, 0.2f);
-        private Circle playerBounds = new Circle(0.0f, -0.85f, 0.1f);
+        public Circle playerBounds = new Circle(0.0f, -0.85f, 0.05f);
     }
 }

@@ -33,12 +33,23 @@ namespace Example
             GL.Ortho(-aspect, aspect, -1, 1, 0, 1); //keep correct scaling on window resize
         }
 
-        public void DrawShape(IReadOnlyCircle boundingCircle)
+        public void DrawAsteroids(IReadOnlyCircle boundingCircle)
         {
             GL.Color3(Color.LightSlateGray);
             DrawObstacle(boundingCircle);
             GL.Color3(Color.White);
             DrawCollisionOutline(boundingCircle);
+        }
+
+        //draw player as Triangle
+        public void DrawPlayer(float posX, float posY, float rad)
+        {
+            GL.Color3(Color.DarkRed);
+            GL.Begin(PrimitiveType.Polygon);
+            GL.Vertex2(posX, posY + rad);
+            GL.Vertex2(posX - rad, posY - rad);
+            GL.Vertex2(posX + rad, posY - rad);
+            GL.End();
         }
 
         public void Resize(int width, int height)
