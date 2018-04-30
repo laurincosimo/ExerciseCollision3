@@ -37,8 +37,11 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
+    <Compile Include="Asteroid.cs" />
+    <Compile Include="Bullets.cs" />
     <Compile Include="ExerciseCollision.cs" />
     <Compile Include="Model.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="View.cs" />
   </ItemGroup>
   <ItemGroup>

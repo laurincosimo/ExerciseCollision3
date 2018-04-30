@@ -41,10 +41,18 @@ namespace Example
             DrawCollisionOutline(boundingCircle);
         }
 
-        //draw player as Triangle
-        public void DrawPlayer(float posX, float posY, float rad)
+        public void DrawPlayer(Player player)
         {
-            GL.Color3(Color.DarkRed);
+            var playerColor = Color.DarkRed;
+            if (player.isInvincible)
+                playerColor = Color.LightGoldenrodYellow;
+            DrawPlayer(player.shape.CenterX, player.shape.CenterY, player.shape.Radius, playerColor);
+        }
+
+        //draw player as Triangle
+        public void DrawPlayer(float posX, float posY, float rad, Color col)
+        {
+            GL.Color3(col);
             GL.Begin(PrimitiveType.Polygon);
             GL.Vertex2(posX, posY + rad);
             GL.Vertex2(posX - rad, posY - rad);
@@ -84,6 +92,11 @@ namespace Example
                 GL.End();
             }
             GL.PopMatrix();
+        }
+        public void DrawBullet(Bullet bullet)
+        {
+            GL.Color3(Color.Gold);
+            DrawObstacle(bullet.shape);
         }
     }
 }

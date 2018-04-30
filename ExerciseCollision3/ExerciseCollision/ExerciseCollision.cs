@@ -17,14 +17,17 @@ namespace Example
             {
                 // handle input
                 var movementXAxis = Keyboard.GetState()[Key.Left] ? -1f : (Keyboard.GetState()[Key.Right] ? 1f : 0f);
-                model.Update(movementXAxis, dt);
+                var movementYAxis = Keyboard.GetState()[Key.Down] ? -1f : (Keyboard.GetState()[Key.Up] ? 1f : 0f);
+                var isShooting = Keyboard.GetState()[Key.Space];
+                model.Update(movementXAxis, movementYAxis, isShooting, dt);
             };
 
             window.Render += () =>
             {
                 view.ClearScreen();
-                view.DrawPlayer(model.playerBounds.CenterX, model.playerBounds.CenterY, model.playerBounds.Radius);
-                foreach (var shape in model.ShapeBounds) view.DrawAsteroids(shape);
+                view.DrawPlayer(model.player);
+                foreach (var asteroid in model.asteroidsList) view.DrawAsteroids(asteroid.shape);
+                foreach (var bullet in model.bullets) view.DrawBullet(bullet);
             };
 
             window.Resize += view.Resize;
